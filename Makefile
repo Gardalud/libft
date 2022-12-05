@@ -1,14 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bguincha <marvin@42lausanne.ch>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/10 21:00:40 by bguincha          #+#    #+#              #
-#    Updated: 2022/11/11 10:52:44 by bguincha         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+
+NAME = libft.a
 
 SRCS =	ft_isalpha.c		\
 		ft_isdigit.c		\
@@ -45,36 +36,38 @@ SRCS =	ft_isalpha.c		\
 		ft_putendl_fd.c		\
 		ft_putnbr_fd.c		\
 
-SRCS_B = ft_lstnew_bonus.c		\
-		ft_lstadd_front_bonus.c		\
-		ft_lstsize_bonus.c		\
-		ft_lstlast_bonus.c		\
-		ft_lstadd_back_bonus.c		\
-		ft_lstdelone_bonus.c		\
-		ft_lstclear_bonus.c		\
-		ft_lstiter_bonus.c		\
-		ft_lstmap_bonus.c		\
+SRCS_B = ft_lstnew.c		\
+		ft_lstadd_front.c		\
+		ft_lstsize.c		\
+		ft_lstlast.c		\
+		ft_lstadd_back.c		\
+		ft_lstdelone.c		\
+		ft_lstclear.c		\
+		ft_lstiter.c		\
+		ft_lstmap.c		\
 
 OBJS = ${SRCS:.c=.o}
 
 OBJS_B = ${SRCS_B:.c=.o}
 
-NAME = libft.a
-
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
+
+AR = ar crs
+
+RM = rm -f
 
 .c.o:
 						${CC} ${CLFAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
-						ar crs ${NAME} ${OBJS}
+						${AR} ${NAME} ${OBJS}
 
 all:		${NAME}
 
 bonus:		${OBJS} ${OBJS_B}
-						ar crs ${NAME} ${OBJS} ${OBJS_B}
+						${AR} ${NAME} ${OBJS} ${OBJS_B}
 
 clean:
 						${RM} ${OBJS} ${OBJS_B}
